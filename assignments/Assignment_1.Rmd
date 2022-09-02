@@ -1,0 +1,12 @@
+---
+title: "Assignment_1"
+author: "Amy West"
+date: '2022-09-02'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+
+```
+
+## Hello World!
