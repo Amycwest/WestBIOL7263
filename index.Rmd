@@ -2,13 +2,46 @@
 title: "BIOL7263 Portfolio"
 author: "Amy West"
 date: '2022-09-02'
-output: html_document
+output: 
+  rmarkdown::html_document:
+    theme: cerulean 
+  
 ---
-[Assignment1](assignments/Assignment_1.html)
-```{r}
 
-```
+# **About me**
 
-## R Markdown
+![Me with a Savannah Sparrow (*Passerculus sandwichensis*)](Images/IMG_0636 2.jpg){width=25%}
+
+### **Education**
+
+- BA: Simpson College (2015)
+- MS: University of South Dakota (2020)
+- PhD: University of Tulsa (Current)
+
+### **Research Projects**
+I study birds! For my master's I studied the presence and physiology of birds at grassland stopover sites.  Currently, I study annual survival in Cliff Swallows by correlating features such as mass, tail length, and beak depth with probability of survival. To find out more about our research check out [The Brown Lab Website](https://www.cliffswallow.org). I was also a field tech for multiple grassland bird studies studying Dickcissels and interned as a hawk watcher at Hawk Ridge Bird Observatory.
+
+### **Interests**
+
+- Birds
+- Avian conservation and ecology
+- Animal behavior
+- Migration
+
+### **Photos of Study Species**
+
+
+| ![A](Images/DSCN6619.jpg) |   ![B](Images/DSCN9293.JPG) | ![C](Images/DSCN0391.jpg)
+|:---:|:---:|:---:
+| Dickcissel (*Spiza americana*) | Cliff Swallow (*Petrochelidon pyrrhonota*)  | LeConte's Sparrow (*Ammodramus leconteii*)
+
+
+## **Assignment Links**
+
+| Date | Description | Assignment Link
+| :--- | :--- | :---
+| 9/2/2022 | Hello World | [Assignment 1](assignments/Assignment_1.html)
+| 9/10/2022 | Profile index page | [Assignment 2](index.html)
+
 
 
