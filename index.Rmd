@@ -27,6 +27,7 @@ I study birds! For my master's I studied the presence and physiology of birds at
 - Avian conservation and ecology
 - Animal behavior
 - Migration
+- Grasslands
 
 ### **Photos of Study Species**
 
@@ -42,7 +43,7 @@ I study birds! For my master's I studied the presence and physiology of birds at
 | :--- | :--- | :---
 | 9/2/2022 | Hello World | [Assignment 1](assignments/Assignment_1.html)
 | 9/10/2022 | Profile index page | [Assignment 2](index.html)
-| 9/22/2022 | Regular Expression, grep, and sed practice | [Assignment 3](assignments/assignment_3/Assignment_3.html)
+| 9/22/2022 | Regular Expression, grep, and sed practice | [Assignment 3](assignments/Assignment_3.html)
 
 
 
