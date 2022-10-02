@@ -1,0 +1,435 @@
+---
+title: "Assignment_3"
+author: "Amy West"
+date: '2022-09-16'
+output: html_document
+---
+
+
+
+## Regular expression challenge 1:
+Challenge 1-5 were completed using BBEdit
+
+**Input**
+
+Candidate Choice    Absentee Mail   Early Voting    Election Day    Total Votes
+
+TODD RUSS   7,021   8,194   135,216   150,431
+
+CLARK JOLLEY    7,012   5,835   107,714   120,561
+
+
+
+**Search**
+```
+,
+#search for a comma ","
+```
+
+
+**Replace**
+
+```
+
+#replace with nothing ""
+```
+
+
+**Output**
+
+Candidate Choice    Absentee Mail   Early Voting    Election Day    Total Votes
+
+TODD RUSS   7021   8194   135216   150431
+
+CLARK JOLLEY    7012   5835   107714   120561
+
+
+**Search**
+
+```
+\s{2,}
+#search for a space that repeats at least two times
+```
+
+**Replace**
+
+```
+, 
+#replace with a comma and then a space ", ")
+```
+
+
+**Output**
+
+Candidate Choice, Absentee Mail, Early Voting, Election Day, Total Votes
+
+TODD RUSS, 7021, 8194, 135216, 150431
+
+CLARK JOLLEY, 7012, 5835, 107714, 120561
+
+
+## Regular expression challenge 2
+
+**Input**
+
+Adamic, Emily M.    ema3896@utulsa.edu
+
+Bierbaum, Emily L.  elb0588@utulsa.edu
+
+Cartmell, Laci J.   ljc454@utulsa.edu
+
+Delaporte, Elise    eld0070@utulsa.edu
+
+Hansen, Rebekah E.  reh9623@utulsa.edu
+
+Herrboldt, Madison A.   mah1626@utulsa.edu
+
+Lewis, Cari D.  cdl5261@utulsa.edu
+
+Mierow, Tanner T.   ttm5619@utulsa.edu
+
+Naranjo, Daniel S.  dsn8679@utulsa.edu
+
+Paslay, Caleb   cap1050@utulsa.edu
+
+Pletcher, Olivia M. omp9336@utulsa.edu
+
+West, Amy C.    acw1471@utulsa.edu
+
+**Search**
+
+```
+\w\.
+#search for any letter and then a period "\w\."  Removes the middle initials when present
+```
+
+
+**Replace**
+
+```
+
+#replace with nothing "")
+```
+
+**Output**
+
+Adamic, Emily    ema3896@utulsa.edu
+
+Bierbaum, Emily  elb0588@utulsa.edu
+
+Cartmell, Laci   ljc454@utulsa.edu
+
+Delaporte, Elise    eld0070@utulsa.edu
+
+Hansen, Rebekah  reh9623@utulsa.edu
+
+Herrboldt, Madison   mah1626@utulsa.edu
+
+Lewis, Cari  cdl5261@utulsa.edu
+
+Mierow, Tanner   ttm5619@utulsa.edu
+
+Naranjo, Daniel  dsn8679@utulsa.edu
+
+Paslay, Caleb   cap1050@utulsa.edu
+
+Pletcher, Olivia omp9336@utulsa.edu
+
+West, Amy    acw1471@utulsa.edu
+
+**Search**
+```
+(\w+), (\w+) 
+#search for any word, followed by a comma, a space and then any other word.  Parentheses indicate phases to move
+```
+
+**Replace**
+```
+\2 \1  
+#replace with the second parenthetical phrase first and then the first parenthetical phrase second
+```
+
+**Output**
+
+Emily Adamic    ema3896@utulsa.edu
+
+Emily Bierbaum  elb0588@utulsa.edu
+
+Laci Cartmell   ljc454@utulsa.edu
+
+Elise Delaporte    eld0070@utulsa.edu
+
+Rebekah Hansen  reh9623@utulsa.edu
+
+Madison Herrboldt   mah1626@utulsa.edu
+
+Cari Lewis  cdl5261@utulsa.edu
+
+Tanner Mierow   ttm5619@utulsa.edu
+
+Daniel Naranjo  dsn8679@utulsa.edu
+
+Caleb Paslay   cap1050@utulsa.edu
+
+Olivia Pletcher omp9336@utulsa.edu
+
+Amy West    acw1471@utulsa.edu
+
+**Search**
+```
+\s+(\w+@utulsa.edu)
+#search for a series of spaces followed by a word ending in the phrase "@utulsa.edu", Parentheses indicate phases to move
+```
+
+**Replace**
+```
+  (\1)
+#replace with two spaces, parentheses, the parenthetical phrase, and a closed set of paretheses "  (\1)"
+```
+
+**Output:**
+
+Emily Adamic  (ema3896@utulsa.edu)
+
+
+Emily Bierbaum  (elb0588@utulsa.edu)
+
+Laci Cartmell  (ljc454@utulsa.edu)
+
+Elise Delaporte  (eld0070@utulsa.edu)
+
+Rebekah Hansen  (reh9623@utulsa.edu)
+
+Madison Herrboldt  (mah1626@utulsa.edu)
+
+Cari Lewis  (cdl5261@utulsa.edu)
+
+Tanner Mierow  (ttm5619@utulsa.edu)
+
+Daniel Naranjo  (dsn8679@utulsa.edu)
+
+Caleb Paslay  (cap1050@utulsa.edu)
+
+Olivia Pletcher  (omp9336@utulsa.edu)
+
+Amy West  (acw1471@utulsa.edu)
+
+
+## Regular expression challenge 3:
+
+**Input**
+
+Banded sculpin, Cottus carolinae, 5
+
+Redspot chub, Nocomis asper, 5
+
+Northern hog sucker, Hypentelium nigricans, 6
+
+Creek chub, Semotilus atromaculatus, 8
+
+Stippled darter, Etheostoma punctulatum, 9
+
+Smallmouth bass, Micropterus dolomieu, 10
+
+Logperch, Percina caprodes, 13
+
+Slender madtom, Noturus exilis, 14
+
+**Search**
+```
+, \w+ \w+,
+#Search for a phrase starting with a comma followed by a space, a word, a space, a word, and a comma  " \w+ \w+,"
+```
+
+**Replace**
+```
+, 
+#replace with a comma and a space ", "
+```
+
+**Output**
+
+Banded sculpin, 5
+
+Redspot chub, 5
+
+Northern hog sucker, 6
+
+Creek chub, 8
+
+Stippled darter, 9
+
+Smallmouth bass, 10
+
+Logperch, 13
+
+Slender madtom, 14
+
+
+# Regular expression challenge 4
+
+**Input**
+
+Banded sculpin, Cottus carolinae, 5
+
+Redspot chub, Nocomis asper, 5
+
+Northern hog sucker, Hypentelium nigricans, 6
+
+Creek chub, Semotilus atromaculatus, 8
+
+Stippled darter, Etheostoma punctulatum, 9
+
+Smallmouth bass, Micropterus dolomieu, 10
+
+Logperch, Percina caprodes, 13
+
+Slender madtom, Noturus exilis, 14
+
+**Search**
+```
+, (\w)\w+ (\w+),
+#search for comma, space, word representing genus (the first letter is searched for separately to be used in replace command), space, second word representing species (parentheses designate this as phrase 2), and a comma
+```
+
+**Replace**
+```
+, \u\1_\2, 
+#Replace with comma, phrase 1 (\u allows for phrase 1 to be capitalized, underscore, and then phrase 2)
+```
+
+**Output**
+
+Banded sculpin, C_carolinae, 5
+
+Redspot chub, N_asper, 5
+
+Northern hog sucker, H_nigricans, 6
+
+Creek chub, S_atromaculatus, 8
+
+Stippled darter, E_punctulatum, 9
+
+Smallmouth bass, M_dolomieu, 10
+
+Logperch, P_caprodes, 13
+
+Slender madtom, N_exilis, 14
+
+
+# Regular expression challenge 5
+
+**Input**
+
+Banded sculpin, Cottus carolinae, 5
+
+Redspot chub, Nocomis asper, 5
+
+Northern hog sucker, Hypentelium nigricans, 6
+
+Creek chub, Semotilus atromaculatus, 8
+
+Stippled darter, Etheostoma punctulatum, 9
+
+Smallmouth bass, Micropterus dolomieu, 10
+
+Logperch, Percina caprodes, 13
+
+Slender madtom, Noturus exilis, 14
+
+**Search**
+```
+, (\w)\w+ (\w{3})\w+, 
+#Search for comma, space, word representing genus (the first letter is searched for separately to be used in replace command), word representing species (the first three letters are searched for separately to be used in replace command), and comma
+```
+
+**Replace**
+```
+, \u\1_\2\., 
+#replace with a comma, space, phrase 1 (\u allows for phrase 1 to be capitalized), underscore, phrase 2, a period, and comma)
+```
+
+**Output**
+
+Banded sculpin, C_car., 5
+
+Redspot chub, N_asp., 5
+
+Northern hog sucker, H_nig., 6
+
+Creek chub, S_atr., 8
+
+Stippled darter, E_pun., 9
+
+Smallmouth bass, M_dol., 10
+
+Logperch, P_cap., 13
+
+Slender madtom, N_exi., 14
+
+
+# Regular expressions challenge 6
+Challenges 5 and 6 used protein FASTA for Barn Owl
+
+```
+grep Tyto protein.faa > owl_headers.txt 
+
+#The word Tyto is found in all the headers. So grep (meaning find) all the lines with the phrase "Tyto" in the file protein.faa and move them (indicated by the carrot) to a new file called "owl_headers.txt"
+
+head(owl_headers.txt)
+```
+**Output:**
+
+>NP_001289625.1 transmembrane protein 68 [Tyto alba]
+
+>NP_001289626.1 fatty acyl-CoA reductase 2 [Tyto alba]
+
+>NP_001289627.1 fatty acyl-CoA reductase 1 [Tyto alba]
+
+>NP_001289628.1 potassium voltage-gated channel subfamily C member 1 [Tyto alba]
+
+>XP_009960549.3 outer dense fiber protein 1 [Tyto alba]
+
+>XP_009960564.2 gasdermin-E isoform X1 [Tyto alba]
+
+>XP_009960578.2 proline-rich protein 9 [Tyto alba]
+
+>XP_009960587.1 claudin-20 [Tyto alba]
+
+>XP_009960588.2 dimethyladenosine transferase 1, mitochondrial isoform X2 [Tyto alba]
+
+>XP_009960617.2 retina-specific copper amine oxidase-like isoform X3 [Tyto alba]
+
+
+# Regular expressions challenge 7
+```
+sed 's/>/ \n>/g' protein.faa | sed -n '/ribosomal/,/^ /p' > ribosomes.txt
+
+#sed command is used for a vriety of reasons in this case to find and replace text
+#s indicates finding and replacing
+#">" is the phrase to search for
+#"/n>" replaces each carat with a new line and carat. /n is the regular expression for a new line
+#g indicates that replacement should occur at every occurance 
+#pipe (|) is used to start a new command that acts on the same file
+# -n and the /p indicate that only the lines where replacements were made should be printed
+#"ribosomal" is the phase to search for in the first line
+#"," comma indicates a search for the start and end of a phrase
+#"^ " carat space indicates the end of the phrase
+#a single arrow is used to moved the searched for phrase to the desired document in this case a file caused ribosomes.txt
+
+head(ribosomes.txt)
+```
+
+**Output**
+
+>XP_009962387.2 39S ribosomal protein L41, mitochondrial [Tyto alba]
+MGLLTELARGLVRGADRMSPFTSKRGPRSYNKGRGARRPGVLTSNKKFILIKEMVPQFVVPDLEGFKLKPYVSYRAPEGS
+EPPMTAEQLFTEVVAPHIKKDVKEGTFDPNNLEKYGFEPTQEGKLFQLFPKNYVR
+ 
+>XP_009969074.2 60S ribosomal protein L3 isoform X1 [Tyto alba]
+MFIFSFQSHRKFSAPRHGSLGFLPRKRSSRHRGKVKSFPKDDPSKPVHLTAFLGYKAGMTHIVREVDRPGSKVNKKEVVE
+AVTIVETPPMIIVGIVGYVQTPRGLRSFKTIFAEHISDECKRRFYKNWHKSKKKAFTKYCKKWQDEEGKKQLEKDFNSMK
+KYCQVIRVMAHTQMRLLPLRQKKAHLMEIQVNGGTVAEKVDWAREKLEQQVPVSTVFGQDEMIDVIGVTKGKGYKGVTSR
+WHTKKLPRKTHRGLRKVACIGAWHPARVAFSVARAGQKGYHHRTEINKKIYKIGQGYQIKDGKLIKNNASTDYDLSDKSI
+NPLGGFVHYGEVTSDFIMLKGCVVGTKKRVLTLRKSLLVQTKRRALEKIDLKFIDTTSKFGHGRFQTAEEKKSFMGPLKK
+
