@@ -73,7 +73,23 @@ duration_year%>%  # use the data frame we jsut created
   summarise(average_species_per_minute= mean(species_per_min)) #take an average of the mean species per minute for each year
 ```
 
-Problem 5:
+**Problem 5:**
+```{r, warning=FALSE}
+top_10<-Toomey_ebird%>% #create a new data frame and reference which data frame you're creating it from
+  count (common_name)%>% #count the occurrence of each common name
+  arrange(by=(desc(n))) #sort by the count from greatest to least
+top_10_list<-as.list(top_10$common_name[1:10]) #create a list from the top 10 birds 
 
+top_10_tibble<- as_tibble(Toomey_ebird%>% #create a tibble
+  filter(common_name==top_10_list)) #filter based off the species in the list
 
+#write tibble to a .csv
+write_csv(top_10_tibble, "~/Documents/School/Biol7263/WestBIOL7263/assignments/assn_4/Toomey_top_10.csv")
+
+head(top_10_tibble)
+```
+[Toomey_top_10](assignments/assn_4/Toomey_top_10.csv)
+
+**Link to script**
+[Assignment 4](assignments/assn_4/Assn_4_script.R)
 

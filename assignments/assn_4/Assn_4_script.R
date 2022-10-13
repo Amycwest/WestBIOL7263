@@ -35,28 +35,41 @@ View(RWBL)
 
 time_filter<-Toomey_ebird %>%#create a data frame with information from the ebird file
   filter(duration > 5) %>% #in the data frame put only birds with a duration greater than 5
-  filter(duration<200)#in the data frame put only birds with a duration less than 200
+  filter(duration < 200)#in the data frame put only birds with a duration less than 200
  
 species_day<-time_filter%>% #create a data frame with information from filtered file we just created
-  group_by(year,date)%>% #group by year and date, the year is redundant but we will need that information for later
+  group_by(year,list_ID)%>% #group by year and date, the year is redundant but we will need that information for later
   count(common_name) #list the species observed on each day
 
 options(dplyr.summarise.inform = FALSE)#some code to make sure the summarize command is counting the smaller group
 
 species_perday<-species_day%>% #create a data frame with information from filtered file we just created
-  group_by(year,date)%>% #group by year and date, the year is redundant but we will need that information for later
+  group_by(year,list_ID)%>% #group by year and date, the year is redundant but we will need that information for later
   summarise(species_per_day=n()) #count the number of rows for each day, which is equal to the number of species
 
 duration_perday<-time_filter%>% #create a data frame with information from grouped file 
-  group_by(year,date)%>% #group by year and date, the year is redundant but we will need that information for later
+  group_by(year,list_ID)%>% #group by year and date, the year is redundant but we will need that information for later
   summarise(duration=mean(duration)) #give the average duration of time for each day, which bears the question did Dr.Toomey ever have more than one checklist per day?
 
 duration_year<-merge(duration_perday,species_perday) #merge the checklists with the species per day and duration per day
 duration_year$species_per_min<-duration_year$species_per_day/duration_year$duration #add a variable to the merged checklist that divides species by duration
 
-duration_year%>%  # use the data frame we jsut created
-  group_by(year) %>% # group the dataframe by year
+duration_year%>%  # use the data frame we just created
+  group_by(year) %>% # group the data frame by year
   summarise(average_species_per_minute= mean(species_per_min)) #take an average of the mean species per minute for each year
 
 
+# problem 5
 
+top_10<-Toomey_ebird%>% #create a new data frame and reference which data frame you're creating it from
+  count (common_name)%>% #count the occurrence of each common name
+  arrange(by=(desc(n))) #sort by the count from greatest to least
+top_10_dataframe<-as.list(top_10$common_name[1:10]) #create a list from the top 10 birds 
+
+top_10_tibble<- as_tibble(Toomey_ebird%>% #create a tibble
+  filter(common_name==Top_10_list)) #filter based off the species in the list
+
+#write tibble to a .csv
+write_csv(top_10_tibble, "~/Documents/School/Biol7263/WestBIOL7263/assignments/assn_4/Toomey_top_10.csv")
+
+  

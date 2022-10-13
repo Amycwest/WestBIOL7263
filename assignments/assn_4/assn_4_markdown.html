@@ -451,7 +451,32 @@ duration_year%&gt;%  # use the data frame we jsut created
 ## 11  2020                     0.513 
 ## 12  2021                     0.370 
 ## 13  2022                     0.461</code></pre>
-<p>Problem 5:</p>
+<p><strong>Problem 5:</strong></p>
+<pre class="r"><code>top_10&lt;-Toomey_ebird%&gt;% #create a new data frame and reference which data frame you&#39;re creating it from
+  count (common_name)%&gt;% #count the occurrence of each common name
+  arrange(by=(desc(n))) #sort by the count from greatest to least
+top_10_list&lt;-as.list(top_10$common_name[1:10]) #create a list from the top 10 birds 
+
+top_10_tibble&lt;- as_tibble(Toomey_ebird%&gt;% #create a tibble
+  filter(common_name==top_10_list)) #filter based off the species in the list
+
+#write tibble to a .csv
+write_csv(top_10_tibble, &quot;~/Documents/School/Biol7263/WestBIOL7263/assignments/assn_4/Toomey_top_10.csv&quot;)
+
+head(top_10_tibble)</code></pre>
+<pre><code>## # A tibble: 6 × 14
+##       X list_ID  common_name scientific_name date  time  count duration location
+##   &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt; &lt;int&gt;    &lt;int&gt; &lt;chr&gt;   
+## 1    27 S226356… Canada Goo… Branta canaden… 2015… 04:3…     2       20 US-VT   
+## 2    37 S100948… Canada Goo… Branta canaden… 2022… 11:3…     4      223 US-OK   
+## 3    47 S368404… Canada Goo… Branta canaden… 2017… 08:0…     2       25 US-MO   
+## 4    57 S173450… Canada Goo… Branta canaden… 2014… 08:2…    38       55 US-MO   
+## 5    67 S178915… Canada Goo… Branta canaden… 2014… 09:0…     6       90 US-MO   
+## 6    77 S210959… Canada Goo… Branta canaden… 2014… 08:0…   134      120 US-MO   
+## # … with 5 more variables: latitude &lt;dbl&gt;, longitude &lt;dbl&gt;, count_tot &lt;int&gt;,
+## #   month &lt;int&gt;, year &lt;int&gt;</code></pre>
+<p><a href="assignments/assn_4/Toomey_top_10.csv">Toomey_top_10</a></p>
+<p><strong>Link to script</strong> <a href="assignments/assn_4/Assn_4_script.R">Assignment 4</a></p>
 
 
 
