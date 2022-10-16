@@ -93,7 +93,7 @@ Link to download final file:
 [Toomey_top_10](results/Toomey_top_10.csv)
 
 
-**Link to script**
+**Link to R script**
 
 [Assignment 4](Assn_4_script.R)
 
