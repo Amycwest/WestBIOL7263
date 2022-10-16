@@ -84,12 +84,16 @@ top_10_tibble<- as_tibble(Toomey_ebird%>% #create a tibble
   filter(common_name==top_10_list)) #filter based off the species in the list
 
 #write tibble to a .csv
-write_csv(top_10_tibble, "~/Documents/School/Biol7263/WestBIOL7263/assignments/assn_4/Toomey_top_10.csv")
+write_csv(top_10_tibble, "~/Documents/School/Biol7263/WestBIOL7263/assignments/assn_4/results/Toomey_top_10.csv")
 
 head(top_10_tibble)
 ```
-[Toomey_top_10](assignments/assn_4/Toomey_top_10.csv)
+Link to download final file:
+
+[Toomey_top_10](results/Toomey_top_10.csv)
+
 
 **Link to script**
-[Assignment 4](assignments/assn_4/Assn_4_script.R)
+
+[Assignment 4](Assn_4_script.R)
 
