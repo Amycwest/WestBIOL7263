@@ -5,22 +5,29 @@ date: "2022-10-25"
 output: html_document
 ---
 
+# Part 1 
 
-Load Packages
-```{r, message=FALSE, warning=FALSE}
-library(sp) # classes for vector data (polygons, points, lines)
-library(rgdal) # basic operations for spatial data
-library(raster) # handles rasters
-library(rgeos) # methods for vector files
-library(geosphere)
-library(dismo)
-```
+### Map of Climate Niche
+![](My_climate_space/My_world_w_points.svg)
+
+# Part 2
+
+### Temperature and precipitation of my niche compared to the world
+![](My_climate_space/Rplot02.svg)
+
+# Part 3
+
+### Link to R script
+
+# [Assignment_7_create_figures script](Assn_7_abridged.R)
 
 
 
-```{r}
-my_world<- raster("assignments/assn_7/My_climate_space/my_world.tif")
-plot(my_world)
-points(my_sites, bg='blue2', col='blue2',  pch=20)
-```
+
+
+
+
+
+
+
 
