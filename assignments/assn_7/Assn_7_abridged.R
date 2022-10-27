@@ -1,6 +1,6 @@
 # Assn 7 abridged
-## Code from GIS but does not output any maps apart from the map of my world and the final graph
-## This code creates a map and a figure based on 10 selected on the map
+## This code creates a map and a figure based on 10 selected points on the map and climate data
+## Code from GIS lesson but does not output any maps apart from the map of my world and the final graph
 
 #load libraries
 library(sp) # classes for vector data (polygons, points, lines)
@@ -10,10 +10,6 @@ library(rgeos) # methods for vector files
 library(geosphere)
 library(dismo)
 
-
-#create a list with all the raster files
-
-clim_stack<- stack(list.files("assignments/assn_7/WORLDCLIM_Rasters", full.names = TRUE, pattern=".tif"))
 
 #select the maps with the data of the three climate parameters
 
@@ -82,8 +78,6 @@ my_world<- predict(
   my_model,
   type="response"
 )
-
-my_world
 
 
 #plot my world 
