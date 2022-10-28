@@ -11,12 +11,12 @@ View(f2)
 View(f3)
 View(f1_pivot)
 View(f2_pivot)
-
-rm(f2_pivot)
+View(f3_transpose)
 
 #Part 1
-?pivot_longer
 
+
+#sort samples in F1 into male and female
 f1_pivot<-f1 %>% 
   pivot_longer(
     col = !ID, #pivot columns that are not family
@@ -25,6 +25,7 @@ f1_pivot<-f1 %>%
     values_drop_na = TRUE,
   )
 
+#sort samples in F2 by treatment
 f2_pivot<-f2 %>% 
   pivot_longer(
     col = !ID, #pivot columns that are not family
@@ -33,9 +34,39 @@ f2_pivot<-f2 %>%
     values_drop_na = TRUE
   )
 
+#join the two tables together
+f3<-f1_pivot %>% 
+  full_join(f2_pivot)
 
-band_members %>% 
-  full_join(band_instruments2, by = c("name" = "artist"))
+#Part 2
+
+#transposing the data
+f3_transpose<-tibble(#make sure data frame remains a tibble
+  t(f3)) #transpose the data
+
+#turning transposed data back into a tibble
+is_tibble(f3_transpose)
+
+View(f3_transpose)
+
+head(f3_transpose)
+f3_transpose$residual_mass<-f3_transpose$`t(f3)`[5]/f3_transpose$`t(f3)`[1]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
