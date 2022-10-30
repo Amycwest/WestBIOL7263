@@ -57,6 +57,9 @@ write_csv(f3, "~/Documents/School/Biol7263/WestBIOL7263/assignments/assn_5/resul
 head(f3)
 ```
 
+Link to download final file:
+
+[f3](results/f3.csv)
 
 ### **Part 2**
 
@@ -83,4 +86,11 @@ write_csv(f3_mean_sd, "~/Documents/School/Biol7263/WestBIOL7263/assignments/assn
 
 head(f3_mean_sd)
 ```
+Link to download final file:
 
+[f3_mean_sd](results/f3_mean_sd.csv)
+
+
+**Link to R script**
+
+[Assignment 5](Assn_5_script.R)

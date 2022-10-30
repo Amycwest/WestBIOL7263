@@ -45,7 +45,7 @@ I study birds! For my master's I studied the presence and physiology of birds at
 | 9/10/2022 | Profile index page | [Assignment 2](index.html) | yes
 | 9/22/2022 | Regular Expression, grep, and sed practice | [Assignment 3](assignments/assn_3/Assignment_3.html) | yes 
 | 10/5/2022 | eBird data with dpylr | [Assignment 4](assignments/assn_4/assn_4_markdown.html) | yes 
-| 10/16/2022 | pivot and merge | [Assignment 5](assignments/assn_5/assn_5_markdown.html) | no 
+| 10/30/2022 | pivot and merge | [Assignment 5](assignments/assn_5/assn_5_markdown.html) | yes 
 | TBD | inkscape | Assignment 6 | no
 | 10/26/2022 | GIS | [Assignment 7](assignments/assn_7/Assn_7_markdown.html) | yes
 | 10/28/2022 | Acuity View | [Mierow seminar assignment](assignments/Acuity/Mierow_Seminar_Assignment.html) | yes
