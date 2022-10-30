@@ -22,19 +22,37 @@ f2<-read_csv("https://github.com/mbtoomey/Biol_7263/blob/main/Data/assignment6pa
 
 Pivot Files
 ```{r}
-f1_pivot<-f1 %>%  #pivot file 1
-  pivot_longer(cols = !ID, names_to = "Sample", values_to = c("Value")) #collapse into two columns titled sample and value
+#sort samples in F1 into gender and treatment
+f1_pivot<-f1 %>% #name new file and reference already made file to construct it from
+  pivot_longer( #divide columns into rows
+    col = !ID, #pivot sample columns
+    names_to = c("Sample", "gender", "treatment"), #transform column names to three variables, sample, gender, and treatment
+    names_sep = "_", #This tells pivot_longer() to split the column names at the "_". 
+    values_drop_na = TRUE, #drop values with missing data
+  ) %>% pivot_wider(names_from = ID, values_from = value) #pipe an additional pivot that stretches the data from the ID columns into separate columns
 
-f2_pivot<-f2 %>% #pivot file 2
-  pivot_longer(cols = !ID, names_to = "Sample", values_to = c("Value")) #collapse into two columns titled sample and value
+#sort samples in F2 by treatment
+f2_pivot<-f2 %>% #name new file and reference already made file to construct it from
+  pivot_longer( #divide columns into rows
+    col = !ID, #pivot sample columns
+    names_to = c("Sample", "treatment"), #transform column names to three variables, sample, gender, and treatment
+    names_sep = c("\\."), #This tells pivot_longer() to split the column names at the "." // are necessary for it to read as a period
+    values_drop_na = TRUE #drop values with missing data
+  ) %>% pivot_wider(names_from = ID, values_from = value) #pipe an additional pivot that stretches the data from the ID columns into separate columns
 
-f3<-full_join(f1_pivot,f2_pivot) #merge the two pivited files into a single document
 ```
 
+Merge files
+```{r}
+#join the two tables together
+f3<-f1_pivot%>% #name new file and reference first file to merge
+  full_join(f2_pivot) #join two files and reference second file to merge
+```
 
 Export Results
 ```{r}
-write_csv(f3, "~/Documents/School/Biol7263/WestBIOL7263/assignments/assn_5/results/body_measurements.csv") #create a csv file called "body measurements" from merged file
+#export csv file
+write_csv(f3, "~/Documents/School/Biol7263/WestBIOL7263/assignments/assn_5/results/f3.csv")
 
 head(f3)
 ```
@@ -42,4 +60,27 @@ head(f3)
 
 ### **Part 2**
 
+Calculate residual mass by sex and treatment
+```{r}
+# create new column in the data calculating residual mass
+f3$resididual_mass<-f3$mass/f3$body_length
+
+#some code to make the summarize function acknowledge both group by categories
+options(dplyr.summarise.inform = FALSE)
+
+#make a new table with summarized data
+f3_mean_sd<-f3%>%   #name new object and reference already made object to construct it from
+  group_by(gender,treatment) %>% # group the new dataframe by gender and treatment
+  summarise(mean= mean(resididual_mass,na.rm = TRUE), SD=sd(resididual_mass,na.rm = TRUE)) #list mean and standard deviation for each category
+
+```
+
+Export table with mean and standard deviations
+
+```{r}
+#export csv file
+write_csv(f3_mean_sd, "~/Documents/School/Biol7263/WestBIOL7263/assignments/assn_5/results/f3_mean_sd.csv")
+
+head(f3_mean_sd)
+```
 

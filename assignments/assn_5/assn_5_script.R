@@ -6,58 +6,56 @@ library(tidyverse)
 f1<-read_csv("https://github.com/mbtoomey/Biol_7263/blob/main/Data/assignment6part1.csv?raw=true")
 f2<-read_csv("https://github.com/mbtoomey/Biol_7263/blob/main/Data/assignment6part2.csv?raw=true")
 
+
+#Part 1
+
+#sort samples in F1 into gender and treatment
+f1_pivot<-f1 %>% #name new file and reference already made file to construct it from
+  pivot_longer( #divide columns into rows
+    col = !ID, #pivot sample columns
+    names_to = c("Sample", "gender", "treatment"), #transform column names to three variables, sample, gender, and treatment
+    names_sep = "_", #This tells pivot_longer() to split the column names at the "_". 
+    values_drop_na = TRUE, #drop values with missing data
+  ) %>% pivot_wider(names_from = ID, values_from = value) #pipe an additional pivot that stretches the data from the ID columns into separate columns
+
+#sort samples in F2 by treatment
+f2_pivot<-f2 %>% #name new file and reference already made file to construct it from
+  pivot_longer( #divide columns into rows
+    col = !ID, #pivot sample columns
+    names_to = c("Sample", "treatment"), #transform column names to three variables, sample, gender, and treatment
+    names_sep = c("\\."), #This tells pivot_longer() to split the column names at the "." // are necessary for it to read as a period
+    values_drop_na = TRUE #drop values with missing data
+  ) %>% pivot_wider(names_from = ID, values_from = value) #pipe an additional pivot that stretches the data from the ID columns into separate columns
+
+#join the two tables together
+f3<-f1_pivot%>% #name new file and reference first file to merge
+  full_join(f2_pivot) #join two files and reference second file to merge
+
+#export csv file
+write_csv(f3, "~/Documents/School/Biol7263/WestBIOL7263/assignments/assn_5/results/f3.csv")
+
+#Part 2
+
+# create new column in the data calculating residual mass
+f3$resididual_mass<-f3$mass/f3$body_length
+
+#some code to make the summarize function acknowledge both group by categories
+options(dplyr.summarise.inform = FALSE)
+
+#make a new table with summarized data
+f3_mean_sd<-f3%>%   #name new object and reference already made object to construct it from
+  group_by(gender,treatment) %>% # group the new dataframe by gender and treatment
+  summarise(mean= mean(resididual_mass,na.rm = TRUE), SD=sd(resididual_mass,na.rm = TRUE)) #list mean and standard deviation for each category
+
+#export csv file
+write_csv(f3_mean_sd, "~/Documents/School/Biol7263/WestBIOL7263/assignments/assn_5/results/f3_mean_sd.csv")
+
+#code to look at created objects as desired
 View(f1)
 View(f2)
 View(f3)
 View(f1_pivot)
-View(f2_pivot)
-View(f3_transpose)
-
-#Part 1
-
-
-#sort samples in F1 into male and female
-f1_pivot<-f1 %>% 
-  pivot_longer(
-    col = !ID, #pivot columns that are not family
-    names_to = c(".value", "gender"), #transform column names to two variables. The special name ".value" tells pivot_longer() that that part of the column name specifies the “value” being measured (which will become a variable in the output) 
-    names_sep = "_", #This tells pivot_longer() to split the column names at the "_". 
-    values_drop_na = TRUE,
-  )
-
-#sort samples in F2 by treatment
-f2_pivot<-f2 %>% 
-  pivot_longer(
-    col = !ID, #pivot columns that are not family
-    names_to = c(".value", "treatment"), #transform column names to two variables. The special name ".value" tells pivot_longer() that that part of the column name specifies the “value” being measured (which will become a variable in the output) 
-    names_sep = c("\\."), #This tells pivot_longer() to split the column names at the "_". 
-    values_drop_na = TRUE
-  )
-
-#join the two tables together
-f3<-f1_pivot %>% 
-  full_join(f2_pivot)
-
-#Part 2
-
-#transposing the data
-f3_transpose<-tibble(#make sure data frame remains a tibble
-  t(f3)) #transpose the data
-
-#turning transposed data back into a tibble
-is_tibble(f3_transpose)
-
-View(f3_transpose)
-
-head(f3_transpose)
-f3_transpose$residual_mass<-f3_transpose$`t(f3)`[5]/f3_transpose$`t(f3)`[1]
-
-
-
-
-
-
-
+View(f2_pivot2)
 
 
 
