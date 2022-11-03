@@ -42,7 +42,7 @@ library(AICcmodavg)
 ```
 
 
-# Part 1
+# Part 1:
 # Generalized Linear Models
 
 ## r code structure
@@ -107,7 +107,7 @@ summary(glm_example)
 anova(glm_example, test="F")
 ```
 
-# Part 2
+# Part 2:
 # Information Criterion
 
 ## Get AIC scores 
@@ -180,7 +180,7 @@ modavg_table
 ```
 
 
-# Part 3
+# Part 3:
 # Exercise on your own
 
 1) Create a glm model with at least three independent variables using the banding data set or another data set of your choice
@@ -189,3 +189,25 @@ modavg_table
 
 3) Create a AICc table using AICctab to show your results
  
+ 
+# Resources:
+
+## Package websites
+
+[MuMIn](https://cran.r-project.org/web/packages/MuMIn/MuMIn.pdf)
+
+[AICcmodavg](https://cran.r-project.org/web/packages/AICcmodavg/AICcmodavg.pdf)
+
+## Info on how to use AIC and model selection
+```
+?AICtab
+# gives 10 suggestions for model selection
+```
+[Chapter 6 of Rethinking Statistics](https://civil.colorado.edu/~balajir/CVEN6833/bayes-resources/RM-StatRethink-Bayes.pdf)
+
+## Some research papers that use AIC
+[Kelly et al. 2008](https://link.springer.com/content/pdf/10.1672/07-152.1.pdf)
+
+[Mazerolle, M. 2006](https://www.researchgate.net/profile/Marc-Mazerolle/publication/233527223_Improving_data_analysis_in_herpetology_using_Akaike's_Information_Criterion_AIC_to_assess_the_strength_of_biological_hypotheses/links/5c9cbeb092851cf0ae9cbfcc/Improving-data-analysis-in-herpetology-using-Akaikes-Information-Criterion-AIC-to-assess-the-strength-of-biological-hypotheses.pdf)
+
+[Robertson et al. 2011](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0016941)

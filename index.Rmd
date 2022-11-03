@@ -49,6 +49,7 @@ I study birds! For my master's I studied the presence and physiology of birds at
 | TBD | inkscape | Assignment 6 | no
 | 10/26/2022 | GIS | [Assignment 7](assignments/assn_7/Assn_7_markdown.html) | yes
 | 10/28/2022 | Acuity View | [Mierow seminar assignment](assignments/Acuity/Mierow_Seminar_Assignment.html) | yes
+|11/3/2022 | Model Selection | [Lesson Code](Model_selection/Model_selection_markdown.html) | na
 
 
 
