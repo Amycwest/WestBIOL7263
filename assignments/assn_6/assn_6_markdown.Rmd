@@ -1,0 +1,111 @@
+---
+title: "assn_6_markdown"
+author: "Amy West"
+date: "2022-11-08"
+output: html_document
+---
+
+Import necessary libraries
+
+```{r, message=FALSE}
+library(dbplyr)
+library(tidyverse)
+library(ggplot2)
+library(patchwork)
+```
+
+### **Part 1**
+
+Import files
+```{r}
+Toomey_ebird<-read.csv("MBT_ebird.csv") #import saved ebird data
+```
+
+Create table of counts
+```{r} 
+options(dplyr.summarise.inform = FALSE) #make summarize function recognize all groups
+
+#create table with year, month, location, and species
+year_count<-Toomey_ebird %>% #reference which file to count data in
+  group_by(month, year, location ) %>% #group data by year
+  count(common_name)
+
+#count the number of species for each group
+year_count2<-year_count %>% #reference which file to count data in
+  group_by(month, year, location ) %>% #group data by year
+  summarise(num_of_species=n())
+
+#output final table
+head(year_count2)
+```
+
+create and display plot
+```{r}
+p1 <-ggplot(data= year_count2)+  #reference created data table
+  aes(as.factor(month), #reference x axis variable as a factor to make it pretty
+      num_of_species, #reference y axis variable
+      color = year) + #color the points based on a variable
+  geom_point(size =3)+ #add points and make them bigger than the default
+  facet_wrap( #make a whole bunch of graphs, stacked on top of each other
+    ~location)+  #each refereneceing a location
+  xlab("Month")+ #give a title for x-axis
+  ylab("Number of species")+#give a title for y-axis
+  ggtitle("Count of observed species in each state")+ #add main title
+  labs(color="Year") #edit legend title
+p1 #output plot
+```
+
+### **Part 2**
+import required dataset
+(data table created in Assignment 5)
+
+```{r}
+f3<-read.csv("f3.csv") #import saved dataframe
+```
+
+
+
+Create plot
+```{r, warning=FALSE, message=FALSE}
+p2 <-ggplot(data= f3,aes(treatment,mass) )+ #reference data to add to the plot
+  geom_jitter(size =3, aes(treatment, mass, color=gender))+ #add points to plot
+  xlab("Treatment")+ #add labels
+  ylab("Mass")+
+  stat_summary(fun = mean,  #add mean to the bar in the color red
+               geom = "crossbar", 
+               width = 0.5, 
+               color = "red") +
+  stat_summary(geom = "errorbar",  #add errorbars to figure in black
+               width = 0.3)+
+  labs(color="Sex") #edit legend title
+  
+p2  #output graph
+```
+
+### **Part 3**
+
+```{r, warning=FALSE, message=FALSE}
+p3<-ggplot(data= f3,aes(age,mass) )+ #reference data to add to the plot
+  geom_point(size =3, aes(age, mass, color=treatment))+ #Add scatterplot points
+  xlab("Age")+ #label axises 
+  ylab("Mass")+
+  geom_smooth(size = 2, method = lm, #add line of best fit
+            aes(color = treatment,  group = treatment), #have a line for each treatment
+            se=FALSE)+# do not show error around the lines
+  labs(color="Treatment")
+
+p3 #output graph
+```
+
+
+### **Part 4**
+
+```{r, warning=FALSE, message=FALSE}
+p2+p3+ #put two plots into a single figure
+  plot_annotation(tag_levels ='a')+ #label each table with A and B
+  plot_annotation('Changes in treatment effects for age and sex') #Title combined tables
+```
+
+
+
+
