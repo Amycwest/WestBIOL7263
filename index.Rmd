@@ -39,17 +39,19 @@ I study birds! For my master's I studied the presence and physiology of birds at
 
 ## **Assignment Links**
 
-| Date | Assignment Description | Assignment Link | Completed
-| :--- | :---: | :---: | :---:
-| 9/2/2022 | Hello World | [Assignment 1](assignments/assn_1/Assignment_1.html) | yes
-| 9/10/2022 | Profile index page | [Assignment 2](index.html) | yes
-| 9/22/2022 | Regular Expression, grep, and sed practice | [Assignment 3](assignments/assn_3/Assignment_3.html) | yes 
-| 10/5/2022 | eBird data with dpylr | [Assignment 4](assignments/assn_4/assn_4_markdown.html) | yes 
-| 10/30/2022 | pivot and merge | [Assignment 5](assignments/assn_5/assn_5_markdown.html) | yes 
-| 11/8/2022 | ggplot2 | [Assignment 6](assignments/assn_6/assn_6_markdown.html) | yes
-| 10/26/2022 | GIS | [Assignment 7](assignments/assn_7/Assn_7_markdown.html) | yes
-| 10/28/2022 | Acuity View | [Mierow seminar assignment](assignments/Acuity/Mierow_Seminar_Assignment.html) | yes
-|11/3/2022 | Model Selection | [Lesson Code](Model_selection/Model_selection_markdown.html) | na
+| Count | Date | Assignment Description | Assignment Link | Completed
+| :--- | :---: | :---: | :---: | :---:
+| 1 | 9/2/2022 | Hello World | [Assignment 1](assignments/assn_1/Assignment_1.html) | yes
+| 2 | 9/10/2022 | Profile index page | [Assignment 2](index.html) | yes
+| 3 | 9/22/2022 | Regular Expression, grep, and sed practice | [Assignment 3](assignments/assn_3/Assignment_3.html) | yes 
+| 4 | 10/5/2022 | eBird data with dpylr | [Assignment 4](assignments/assn_4/assn_4_markdown.html) | yes 
+| 5 | 10/30/2022 | pivot and merge | [Assignment 5](assignments/assn_5/assn_5_markdown.html) | yes 
+| 6 | 11/8/2022 | ggplot2 | [Assignment 6](assignments/assn_6/assn_6_markdown.html) | yes
+| 7 | 10/26/2022 | GIS | [Assignment 7](assignments/assn_7/Assn_7_markdown.html) | yes
+| 8 | 10/28/2022 | Acuity View | [Mierow seminar assignment](assignments/Acuity/Mierow_Seminar_Assignment.html) | yes
+| 9 | 11/17/2022 | Phylogeny Tree | [Phylogeny Tree](assignments/Phylogeny_trees/Phylogeny_bird_tree_markdown.html) | yes
+| 10 | 12/1/2023 | Build Your own Function | TBA | no
+| NA | 11/3/2022 | Model Selection | [Lesson Code](Model_selection/Model_selection_markdown.html) | na
 
 
 
