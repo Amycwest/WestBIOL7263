@@ -1,0 +1,102 @@
+---
+title: "Create_your_own_functions_assn"
+author: "Amy West"
+date: "2022-12-02"
+output: html_document
+---
+
+
+# Preliminary code
+Load necessary libraries
+```{r, message=FALSE}
+library(dplyr)
+library(tidyverse)
+```
+
+Import dataset
+
+```{r}
+Toomey_ebird<-read.csv("MBT_ebird.csv")
+head(Toomey_ebird)
+```
+
+# Problem 1
+
+```{r}
+#create function
+bird_call<-function(sci_name){ #name function and variable to input into function
+  bird<-Toomey_ebird %>% #create a data frame with information from the ebird file
+    filter(scientific_name == sci_name) #filter out a specific scientific name
+  write_csv(bird,paste0(sci_name,".csv")) #write a file to a csv
+}
+
+#create list of all the things to put into the function
+birds=c("Anser caerulescens", "Antrostomus carolinensis", "Setophaga americana")
+
+#loop the list through the function
+for (item in birds){
+  bird_call(item)
+}
+
+```
+
+
+
+# Problem 2
+
+```{r}
+#create an empty dataframe
+Most_and_least_df<-NULL
+
+#create function
+Most_and_least<-function(file_name){ #name function and input file
+  bird_count<-read.csv(paste0(file_name,".csv")) #import file
+  max_obs=slice_max(bird_count, count) #select the row with the most observations of the bird
+  head_max_obs=slice_head(max_obs) # just take the top row from the file with the max observations
+  min_obs=slice_min(bird_count, count) #select the row with the fewest observations of the bird
+  head_min_obs=slice_head(min_obs) #just take the top row from the file with the min observations
+  Most_and_least_df<-rbind(Most_and_least_df,head_max_obs, head_min_obs) #combine the files with the single min and max observations
+  assign('Most_and_least_df',Most_and_least_df,envir=.GlobalEnv) #put the dataframe in the global environment
+}
+
+#run the function for every item in the list
+for (item in birds){ #loop through each species in the list
+  Most_and_least(item) #run the function
+}
+
+#export file
+write_csv(Most_and_least_df,
+          ("Most_and_Least.csv"))
+
+head(Most_and_least_df)
+```
+
+
+# Problem 3
+```{r}
+#create a new bird list
+birds2=c("Branta canadensis", "Spatula discors", "Anas platyrhynchos")
+
+#clear out the dataframe that was created above
+Most_and_least_df<-NULL
+
+#create a function with already created functions
+fun_combine<-function(species){ #name new function
+  bird_call(species) #call first function
+  Most_and_least(species) #call second function
+}
+
+#loop through each item on the new bird list
+for (item in birds2){
+  fun_combine(item)
+}
+
+#export file
+write_csv(Most_and_least_df,
+          ("Most_and_Least_problem3.csv"))
+
+head(Most_and_least_df)
+```
+
+
+

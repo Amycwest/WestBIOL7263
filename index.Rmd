@@ -50,7 +50,7 @@ I study birds! For my master's I studied the presence and physiology of birds at
 | 7 | 10/26/2022 | GIS | [Assignment 7](assignments/assn_7/Assn_7_markdown.html) | yes
 | 8 | 10/28/2022 | Acuity View | [Mierow seminar assignment](assignments/Acuity/Mierow_Seminar_Assignment.html) | yes
 | 9 | 11/17/2022 | Phylogeny Tree | [Phylogeny Tree](assignments/Phylogeny_trees/Phylogeny_bird_tree_markdown.html) | yes
-| 10 | 12/1/2023 | Build Your own Function | TBA | no
+| 10 | 12/1/2023 | Build Your own Function | [build_your_own_function_assn](assignments/build_your_own_functions/build_your_own_functions_assn.html)| no
 | NA | 11/3/2022 | Model Selection | [Lesson Code](Model_selection/Model_selection_markdown.html) | na
 
 
